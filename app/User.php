@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,12 +24,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function contacts()
-    {
+    public function contacts() {
         return $this->hasMany(Contact::class);
     }
-    public function contactsToCity()
-    {
+
+    public function contactsToCity() {
         return $this->hasMany(City::class);
     }
+
+    public function articles() {
+        return $this->hasMany('App\Article');
+    }
+    public function address() {
+        return $this->hasOne('App\Address');
+    }
+
 }
