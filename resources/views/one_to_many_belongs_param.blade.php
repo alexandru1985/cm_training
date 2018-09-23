@@ -3,11 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <small>{{$user->address->country}}</small>
-                @foreach ($user->articles as $article)
-                <h1>{{$article->title}}</h1>
+                @foreach ($articles as $article)
+                <h1>{{$article->title}} <small>{{$article->getPosterUsername->name}}</small>, {{$article->getPapername->name}}</h1>
                 <p>{{$article->body}}</p>
-                <p>{{dd($user)}}</p>
                 @endforeach
         </div>
     </div>

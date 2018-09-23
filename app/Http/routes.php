@@ -24,4 +24,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::resource('city', 'CityController');
 Route::get('/one_to_many_belongs', 'TestController@one_to_many_belongs');
+Route::get('/one_to_many_belongs_param/{user_id}', 'TestController@one_to_many_belongs_param');
 Route::get('/one_to_many_has_many/{username}', 'TestController@one_to_many_has_many');
+Route::get('my-form','HomeController@myform');
+Route::post('my-form','HomeController@myformPost');

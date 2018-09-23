@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use App\Http\Controllers\TestController;
 class AuthController extends Controller
 {
     /*
@@ -38,6 +38,11 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+            session(['message'=>'test']);
+            $session = session('message');
+//            session()->forget('message');
+//            unset($session);
+//             dd($session);
     }
 
     /**
@@ -63,6 +68,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        
+//        if($data['email']=='test60@mail.com') {
+//            
+//            session(['message'=>'123']);
+//            $session = session('message');
+//            dd($session);
+//        }
+        $test = new TestController();
+        $test->test($data['email']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
