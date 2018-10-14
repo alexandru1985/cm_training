@@ -28,7 +28,7 @@
 
 
             <form name="myForm" action="/action_page.php"
-                  id="myForm" method="post" enctype="multipart/form-data">
+                  id="myForm" method="post">
 
                 {{ csrf_field() }}
 
@@ -69,9 +69,9 @@
 
                 <div class="form-group">
 
-                    <strong>File:</strong>
+                    <strong>Address:</strong>
 
-                    <input type="file" id="userfile" name="userfile" class="files_update"/>
+                    <textarea class="form-control" name="address" placeholder="Address"></textarea>
 
                 </div>
 
@@ -85,8 +85,7 @@
             </form>
 
         </div>
-        <div id="debug">
-        </div>
+
 
         <script type="text/javascript">
 
@@ -122,23 +121,9 @@ $(document).ready(function () {
                 if ($.isEmptyObject(data.error)) {
                     $(".test").empty();
                     $(".form-group").removeClass('has-error');
-                    var form_data = new FormData($("#myForm"));
-                    form_data.append('file_name', $('.files_update').prop('files')[0]);
-                    form_data.append('_token', '{{csrf_token()}}');
-                    //alert(form_data);
-
-                    $.ajax({
-                        url: "http://localhost/contact_manager/public/upload",
-                        data: form_data,
-                        type: 'POST',
-                        contentType: false,
-                        processData: false,
-                        headers: {
-                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                        },
-                        success: function (result) {
-                            $("#debug").append(result);
-                        }});
+                    setTimeout(function () {
+                        $('#myForm').submit();
+                    }, 500); // 
 
                 } else {
 //           console.log(data.error['first_name'].length);

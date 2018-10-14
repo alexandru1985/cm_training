@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Validator;
-
+use Illuminate\Support\Facades\File;
 class HomeController extends Controller {
 
     /**
@@ -67,5 +67,17 @@ class HomeController extends Controller {
                         'last_name' => $validator->errors()->first('last_name')
         ]]);
     }
+    public function uploadSubmit(Request $request) {
+// dd($request->test);
+        $file = $request->file_name;
+//        
 
+       $destinationPath = 'uploads';
+       $file->move($destinationPath,$file->getClientOriginalName());
+             return redirect()
+          ->back()
+          ->withSuccess("File  uploaded.");
+
+
+    }
 }

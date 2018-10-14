@@ -28,3 +28,7 @@ Route::get('/one_to_many_belongs_param/{user_id}', 'TestController@one_to_many_b
 Route::get('/one_to_many_has_many/{username}', 'TestController@one_to_many_has_many');
 Route::get('my-form','HomeController@myform');
 Route::post('my-form','HomeController@myformPost');
+Route::post('upload', ['uses' => 'HomeController@uploadSubmit', 'as' => 'upload']);
+
+Route::match(['get', 'post'], 'ajax-image-upload', 'ImageController@ajaxImage');
+Route::delete('ajax-remove-image/{filename}', 'ImageController@deleteImage');
