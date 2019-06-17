@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Validator;
 use Illuminate\Support\Facades\File;
 class HomeController extends Controller {
@@ -29,6 +29,19 @@ class HomeController extends Controller {
     public function myform() {
 
         return view('myform');
+    }
+    public function testAjax($id) {
+        $idTest = $id;
+        return view('testAjax', compact('idTest'));
+    }
+    public function testAjaxPost($id, Request $request) {
+        $arr = [];
+        for($i = 0;$i <100000;$i++) {
+           $arr[] = $i;
+           
+        }
+
+      return $arr;
     }
 
     /**
@@ -62,16 +75,16 @@ class HomeController extends Controller {
         }
 
 
-        return response()->json(['error' => [
+        return response()->json([
                         'first_name' => $validator->errors()->first('first_name'),
                         'last_name' => $validator->errors()->first('last_name')
-        ]]);
+        ]);
     }
     public function uploadSubmit(Request $request) {
 // dd($request->test);
         $file = $request->file_name;
 //        
-
+//dd($file);
        $destinationPath = 'uploads';
        $file->move($destinationPath,$file->getClientOriginalName());
              return redirect()

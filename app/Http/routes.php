@@ -28,6 +28,8 @@ Route::get('/one_to_many_belongs_param/{user_id}', 'TestController@one_to_many_b
 Route::get('/one_to_many_has_many/{username}', 'TestController@one_to_many_has_many');
 Route::get('my-form','HomeController@myform');
 Route::post('my-form','HomeController@myformPost');
+Route::get('/testAjax/{id}','HomeController@testAjax');
+Route::post('testAjaxPost/{id}','HomeController@testAjaxPost');
 Route::post('upload', ['uses' => 'HomeController@uploadSubmit', 'as' => 'upload']);
 
 Route::match(['get', 'post'], 'ajax-image-upload', 'ImageController@ajaxImage');

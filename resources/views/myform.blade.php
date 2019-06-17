@@ -119,7 +119,7 @@ $(document).ready(function () {
             success: function (data) {
 
 
-                if ($.isEmptyObject(data.error)) {
+                if ($.isEmptyObject(data)) {
                     $(".test").empty();
                     $(".form-group").removeClass('has-error');
                     var form_data = new FormData($("#myForm"));
@@ -137,16 +137,16 @@ $(document).ready(function () {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
                         success: function (result) {
-                            $("#debug").append(result);
+                           // $("#debug").append(result);
                         }});
 
                 } else {
 //           console.log(data.error['first_name'].length);
 //           console.log(data.error['last_name'].length);
-                    if (data.error['first_name'].length > 0) {
+                    if (data.first_name.length > 0) {
                         $("#first_name_error").empty();
                         $("#first_name_row").addClass('has-error');
-                        $("#first_name_error").append(data.error['first_name']);
+                        $("#first_name_error").append(data['first_name']);
 
                     } else {
 
@@ -154,10 +154,10 @@ $(document).ready(function () {
                         $("#first_name_row").removeClass('has-error');
 
                     }
-                    if (data.error['last_name'].length > 0) {
+                    if (data.last_name.length > 0) {
                         $("#last_name_error").empty();
                         $("#last_name_row").addClass('has-error');
-                        $("#last_name_error").append(data.error['last_name']);
+                        $("#last_name_error").append(data['last_name']);
                     } else {
 
                         $("#last_name_error").empty();
