@@ -106,19 +106,19 @@
         }
 
         function removeClass() {
-           var ids = [];  
+            var ids = [];
             $('.test').each(function () {
                 var str = this.id;
                 var id = str.substring(8);
                 ids.push(id);
-                
+
             });
-            ids.forEach(function(id){
-                  $("#inactive"+id).removeClass('btn-success').html('Inactive');
+            ids.forEach(function (id) {
+                $("#inactive" + id).removeClass('btn-success').html('Inactive');
             });
-            
+
         }
-                function test(id) {
+        function test(id) {
             $.ajax({
                 url: "http://localhost/contact_manager/public/testAjaxPost/3",
 
@@ -130,7 +130,7 @@
                 },
                 success: function (result) {
                     $("#debug").append(result);
-removeClass();
+                    removeClass();
                 }}).done(function () {
 //                    $("#inactive").removeClass('btn-danger');
 //                    $("#inactive1").removeClass('btn-success');

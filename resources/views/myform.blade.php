@@ -137,7 +137,7 @@ $(document).ready(function () {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
                         success: function (result) {
-                           // $("#debug").append(result);
+                            // $("#debug").append(result);
                         }});
 
                 } else {
